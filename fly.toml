@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for falling-fire-303 on 2024-09-23T19:49:38-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'falling-fire-303'
+primary_region = 'dfw'
+
+[build]
+
+[env]
+  PORT = '8080'
+  ROCKET_ADDRESS = '0.0.0.0'
+  ROCKET_PORT = '8080'
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
